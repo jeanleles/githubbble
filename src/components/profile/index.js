@@ -1,24 +1,38 @@
 import React from "react"
 import * as S from './styled'
+import { FaGithub, FaUsers, FaStar } from 'react-icons/fa'
+import useGithub from "../../hooks/github-hooks"
 
 const Profile = () => {
+    
+    const { githubState } = useGithub
+    
     return <S.Wrapper>
         <S.WrapperAvatar src='https://avatars.githubusercontent.com/u/7783578?v=4' alt="Avatar User" />
         <S.WrapperInfoUser>
             <div>
-                <h1>Jean Leles</h1>
+                <h1>{githubState.user.name}</h1>
                 <S.WrapperUsername>
-                    <h3>Username: <span>jeanleles</span></h3>
+                    <a href="https://github.com/jeanleles" target="_blank" rel="noopener noreferrer">
+                        <FaGithub style={{ marginRight: 6, verticalAlign: 'middle' }} />
+                        jeanleles
+                    </a>
                 </S.WrapperUsername>
             </div>
             <S.WrapperStatusCount>
                 <div>
-                    <h4>Followers</h4>
+                    <h4>
+                        <FaUsers style={{ marginRight: 6, verticalAlign: 'middle' }} />
+                        Followers
+                    </h4>
                     <span>7</span>
                 </div>
 
                 <div>
-                    <h4>Starreds</h4>
+                    <h4>
+                        <FaStar style={{ marginRight: 6, verticalAlign: 'middle' }} />
+                        Starred
+                    </h4>
                     <span>5</span>
                 </div>
 
