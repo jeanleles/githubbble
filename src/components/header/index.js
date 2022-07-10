@@ -1,13 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './styled'
-import { IoTelescope } from "react-icons/io5";
+import { IoTelescope, IoSearch } from "react-icons/io5";
+import useGithub from "../../hooks/github-hooks"
 
 const Header = () =>  {
+  const { getUser } = useGithub()
+
+  const [usernameForSearch, setUsernameForSearch] = useState()
+
+  const submitGetUser = () => {
+    if(!usernameForSearch) return
+    return getUser(usernameForSearch)
+  }
+
   return (
     <S.Header>
         <S.WrapperHeader>
+          
+          <S.WrapperLogo>
             <IoTelescope style={{ marginRight: 6, fontSize: 28, color: '#4ECCA3' }} />
             <h1>GitHubbble</h1>
+          </S.WrapperLogo>
+          
+          <S.WrapperSearch>
+            <form action="">
+              <input type="text" className='search' placeholder='Pesquisar um usuário...'
+               onChange={(event) => setUsernameForSearch(event.target.value)} />
+              <button type='submit' onClick={submitGetUser}>
+                <IoSearch style={{ marginRight: 6, fontSize: 20, color: '#fff' }} />
+                Pesquisar
+              </button>
+            </form>
+          </S.WrapperSearch>
+
+          <S.WrapperCollorMode>Light</S.WrapperCollorMode>
+
         </S.WrapperHeader>
     </S.Header>
   )

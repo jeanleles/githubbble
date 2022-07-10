@@ -26,6 +26,7 @@ export const WrapperTab = styled(Tab)`
 
     &:focus {
         outline: none;
+        border-bottom: 2px solid #4ECCA3;
     }
 
     &.is-selected {

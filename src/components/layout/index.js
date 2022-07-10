@@ -4,10 +4,12 @@ import * as S from './styled'
 
 const Layout = ({ children }) => {
     return (
-        <>
-            <Header /> 
+        <>            
             <S.WrapperLayout>
-                {children}           
+                <Header />
+                <S.WrapperContent>
+                    {children}           
+                </S.WrapperContent>
             </S.WrapperLayout>
         </>
     )
