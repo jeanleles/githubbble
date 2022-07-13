@@ -23,14 +23,12 @@ const Header = () =>  {
           </S.WrapperLogo>
           
           <S.WrapperSearch>
-            <form action="">
-              <input type="text" className='search' placeholder='Pesquisar um usuário...'
-               onChange={(event) => setUsernameForSearch(event.target.value)} />
-              <button type='submit' onClick={submitGetUser}>
-                <IoSearch style={{ marginRight: 6, fontSize: 20, color: '#fff' }} />
-                Pesquisar
-              </button>
-            </form>
+            <input type="text" className='search' placeholder='Pesquisar um usuário...'
+              onChange={(event) => setUsernameForSearch(event.target.value)} />
+            <button type='submit' onClick={submitGetUser}>
+              <IoSearch style={{ marginRight: 6, fontSize: 20, color: '#fff' }} />
+              Pesquisar
+            </button>
           </S.WrapperSearch>
 
           <S.WrapperCollorMode>Light</S.WrapperCollorMode>

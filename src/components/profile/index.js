@@ -8,7 +8,7 @@ const Profile = () => {
     const { githubState } = useGithub()
     
     return <S.Wrapper>
-        <S.WrapperAvatar src='https://avatars.githubusercontent.com/u/7783578?v=4' alt="Avatar User" />
+        <S.WrapperAvatar src={githubState.user.avatar} alt="Avatar User" />
         <S.WrapperInfoUser>
             <div>
                 <h1>{githubState.user.name}</h1>
@@ -17,6 +17,7 @@ const Profile = () => {
                         <FaGithub style={{ marginRight: 6, verticalAlign: 'middle' }} />
                         {githubState.user.login}
                     </a>
+                    <p>{githubState.user.bio}</p>
                 </S.WrapperUsername>
             </div>
             <S.WrapperStatusCount>
@@ -31,11 +32,6 @@ const Profile = () => {
                 <div>
                     <h4>Following</h4>
                     <span>{githubState.user.following}</span>
-                </div>
-
-                <div>
-                    <h4>Gists</h4>                    
-                    <span>{githubState.user.public_gists}</span>
                 </div>
 
                 <div>

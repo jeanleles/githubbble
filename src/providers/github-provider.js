@@ -16,13 +16,13 @@ const GithubProvider = ({ children }) => {
             avatar: undefined,
             login: undefined,
             name: undefined,
+            bio: undefined,
             html_url: undefined,
             blog: undefined,
             company: undefined,
             location: undefined,
             followers: 0,
             following: 0,
-            public_gists: 0,
             public_repos: 0,
         },
         repositories: [],
@@ -30,7 +30,8 @@ const GithubProvider = ({ children }) => {
     })
 
     const getUser = (username) => {
-        api.get(`users/${username}`).then(({ data }) => {
+        api.get(`users/${username}`)
+        .then(({ data }) => {
             setGithubState((prevState) => ({
                 ...prevState,
                 user: {
@@ -38,13 +39,13 @@ const GithubProvider = ({ children }) => {
                     avatar: data.avatar_url,
                     login: data.login,
                     name: data.name,
+                    bio: data.bio,
                     html_url: data.html_url,
                     blog: data.blog,
                     company: data.company,
                     location: data.location,
                     followers: data.followers,
                     following: data.following,
-                    public_gists: data.public_gists,
                     public_repos: data.public_repos,
                 }
             }))
