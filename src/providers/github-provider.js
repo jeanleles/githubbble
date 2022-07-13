@@ -3,6 +3,7 @@ import api from '../services/api'
 
 export const GithubContext = createContext({
     loading: false,
+    hasUser: false,
     user: {},
     repositories: [],
     starred: [],
@@ -30,27 +31,40 @@ const GithubProvider = ({ children }) => {
     })
 
     const getUser = (username) => {
-        api.get(`users/${username}`)
-        .then(({ data }) => {
-            setGithubState((prevState) => ({
-                ...prevState,
-                user: {
-                    id: data.id,
-                    avatar: data.avatar_url,
-                    login: data.login,
-                    name: data.name,
-                    bio: data.bio,
-                    html_url: data.html_url,
-                    blog: data.blog,
-                    company: data.company,
-                    location: data.location,
-                    followers: data.followers,
-                    following: data.following,
-                    public_repos: data.public_repos,
-                }
-            }))
-        })
-    }
+        setGithubState((prevState) => ({
+            ...prevState,
+            loading: !prevState.loading,
+        }));
+
+        api
+            .get(`users/${username}`)
+            .then(({ data }) => {
+                setGithubState((prevState) => ({
+                    ...prevState,
+                    hasUser: true,
+                    user: {
+                        id: data.id,
+                        avatar: data.avatar_url,
+                        login: data.login,
+                        name: data.name,
+                        bio: data.bio,
+                        html_url: data.html_url,
+                        blog: data.blog,
+                        company: data.company,
+                        location: data.location,
+                        followers: data.followers,
+                        following: data.following,
+                        public_repos: data.public_repos,
+                    },
+                }));
+            })
+            .finally(() => {
+                setGithubState((prevState) => ({
+                    ...prevState,
+                    loading: !prevState.loading,
+                }));
+            });
+    };
 
     const contextValue = {
         githubState,

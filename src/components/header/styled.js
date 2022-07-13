@@ -40,9 +40,9 @@ export const WrapperLogo = styled.div`
 export const WrapperSearch = styled.div`
     input {
         border: 2px solid #4ECCA3;
+        border-radius: 8px 0 0 8px;
         padding: 8px;
-        color: #FEFEFE;
-        border-radius: 8px;
+        color: #FEFEFE;        
         width: 300px;
         user-select: none;
         
@@ -53,12 +53,18 @@ export const WrapperSearch = styled.div`
 
     button {
         background-color: #4ECCA3;
-        padding: 8px;
-        border-radius: 8px;
-        margin-left: 8px;
+        padding: 9px;
+        border-radius: 0 8px 8px 0;
+    
 
         &:hover {
-            background-color: #4dcbcb;
+            color: #FFF;
+            transition: all .2s;
+        }
+
+        .search {
+            font-size: 20px;
+            color: #4ECCA3;
         }
     }
 
