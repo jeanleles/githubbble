@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import * as S from './styled'
-import { IoTelescope, IoSearch } from "react-icons/io5";
+import { IoTelescope, IoSearch, IoSunnySharp } from "react-icons/io5";
 import useGithub from "../../hooks/github-hooks"
 
 const Header = () =>  {
@@ -30,7 +30,7 @@ const Header = () =>  {
             </button>
           </S.WrapperSearch>
 
-          <S.WrapperCollorMode>Light</S.WrapperCollorMode>
+          <S.WrapperCollorMode><IoSunnySharp/></S.WrapperCollorMode>
 
         </S.WrapperHeader>
     </S.Header>

@@ -3,7 +3,7 @@ import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 
 export const WrapperTabs = styled(Tabs)`
     font-size: 16px;
-    width: 100%;
+    flex-grow: 1;
 `
 
 export const WrapperTabList = styled(TabList)`

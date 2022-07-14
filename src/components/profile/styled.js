@@ -2,18 +2,22 @@ import styled from "styled-components"
 
 export const Wrapper = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
     color: #FEFEFE;
-    margin-bottom: 40px;
+    margin: 4px 30px 40px 0;
+    padding: 20px 12px;
+    border: 2px solid #4ECCA3;
+    border-radius: 8px;
+    min-width: 320px;
 `
 
 export const WrapperInfoUser = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-left: 12px;
-    height: 150px;
+    align-items: center;
+    text-align: center;
+
     h1 {
         font-size: 32px;
         font-weight: 700;
@@ -28,13 +32,7 @@ export const WrapperInfoUser = styled.div`
         font-size: 18px;
         font-weight: 400;
     }
-`
 
-export const WrapperUsername = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    
     a {
         color: #4ECCA3;
         font-size: 20px;
@@ -44,6 +42,13 @@ export const WrapperUsername = styled.div`
     a:hover {
         color: #4dcbcb;
     }
+`
+
+export const WrapperAvatar = styled.img`
+    border-radius: 50%;
+    border: 4px solid #4ECCA3;
+    width: 180px;
+    margin-bottom: 20px;
 `
 
 export const WrapperBio = styled.div`
@@ -56,20 +61,14 @@ export const WrapperBio = styled.div`
 
 export const WrapperStatusCount = styled.div`
     display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: 1px solid #30363d;
     align-items: center;
     div {
         margin: 12px;
         text-align: center;
     }
-`
-
-export const WrapperAvatar = styled.img`
-    border-radius: 50%;
-    border: 6px solid #4ECCA3;
-    width: 180px;
-    margin-right: 12px;
-`
-
-export const FaGithub = styled.svg`
-    //margin-right: 10px;
 `

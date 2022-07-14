@@ -26,7 +26,7 @@ const Repositories = () => {
         >
           <S.WrapperTabList>
             <S.WrapperTab>Repositories</S.WrapperTab>
-            <S.WrapperTab>Starreds</S.WrapperTab>
+            <S.WrapperTab>Stars</S.WrapperTab>
           </S.WrapperTabList>
           <S.WrapperTabPanel>
             <S.WrapperList>
