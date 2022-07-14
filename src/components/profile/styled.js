@@ -37,12 +37,20 @@ export const WrapperUsername = styled.div`
     
     a {
         color: #4ECCA3;
-        font-size: 24px;
+        font-size: 20px;
         outline: none;
     }
 
     a:hover {
         color: #4dcbcb;
+    }
+`
+
+export const WrapperBio = styled.div`
+    margin-top: 8px;
+    
+    p {
+        font-size: 14px;
     }
 `
 

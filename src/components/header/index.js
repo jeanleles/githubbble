@@ -26,7 +26,7 @@ const Header = () =>  {
             <input type="text" className='search' placeholder='Pesquisar um usuário...'
               onChange={(event) => setUsernameForSearch(event.target.value)} />
             <button type='submit' onClick={submitGetUser}>
-              <IoSearch className='searchIcon' />
+              <IoSearch style={{ marginRight: 6, fontSize: 20 }} />
             </button>
           </S.WrapperSearch>
 

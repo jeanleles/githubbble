@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 12px;
+  padding: 8px;
   border-radius: 8px;
   border: 1px solid #9ba5b0;
   margin: 16px 16px;
   width: 100%;
-  min-height: 120px;
+  height: 150px;
   align-content: center;
 `;
 
@@ -24,18 +24,8 @@ export const WrapperFullName = styled.h2`
 `;
 
 export const WrapperLink = styled.a`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
-  line-height: 26px;
-  color: #4db8ff;
-`;
-
-export const WrapperDescription = styled.p`
-  font-size: 14px;
-  margin: 12px 0;
-`;
-
-export const WrapperDate = styled.p`
-  font-size: 14px;
-  margin: 12px 0;
+  margin: 8px 0;
+  color: #3182ce;
 `;

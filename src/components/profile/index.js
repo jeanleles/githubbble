@@ -17,8 +17,10 @@ const Profile = () => {
                         <FaGithub style={{ marginRight: 6, verticalAlign: 'middle' }} />
                         {githubState.user.login}
                     </a>
-                    <p>{githubState.user.bio}</p>
                 </S.WrapperUsername>
+                <S.WrapperBio>
+                    <p>{githubState.user.bio}</p>
+                </S.WrapperBio>
             </div>
             <S.WrapperStatusCount>
                 <div>

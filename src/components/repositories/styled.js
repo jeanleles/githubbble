@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import { Tabs, TabList, Tab, TabPanel} from "react-tabs";
+import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 
 export const WrapperTabs = styled(Tabs)`
     font-size: 16px;
     width: 100%;
 `
 
-export const WrapperTabsList = styled(TabList)`
+export const WrapperTabList = styled(TabList)`
     list-style-type: none;
     padding: 4px;
     display: flex;
     margin: 4px;
 `
-// WrapperTabsList.tabsRole = 'Tabslist'
+//WrapperTabList.tabsRole = 'Tablist'
 
 export const WrapperTab = styled(Tab)`
     border-radius: 8px 8px 0 0;
@@ -58,7 +58,18 @@ export const WrapperTabPanel = styled(TabPanel)`
         margin: 12px;
         font-size: 24px;
         color: #FEFEFE;
-    };
+    }
+`
+// WrapperTabPanel.tabsRole = 'TabPanel'
+
+export const WrapperList = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 `
 
-// WrapperTabPanel.tabsRole = 'TabPanel'
+export const RepositoryItem = styled.div`
+    background-color: #0D1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+`

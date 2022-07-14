@@ -1,34 +1,67 @@
-import React from 'react'
-import RepositoryItem from '../repository-item'
-import * as S from './styled'
+import React, { useEffect, useState } from "react"
+import useGithub from "../../hooks/github-hooks"
+import RepositoryItem from "../repository-item"
+import StarredItem from "../starred-item"
+import * as S from "./styled"
 
 const Repositories = () => {
-  return <S.WrapperTabs
-    selectedTabClassName='is-selected'
-    selectedTabPanelClassName='is-selected'
-  >
-    <S.WrapperTabsList>
-      <S.WrapperTab>Repositories</S.WrapperTab>
-      <S.WrapperTab>Starred</S.WrapperTab>
-    </S.WrapperTabsList>
-    <S.WrapperTabPanel>
-      <h3>Repositories List</h3>
-      <RepositoryItem
-        name="contador-js"
-        fullName="jeanleles/contador-js"
-        linkRepo="https://github.com/jeanleles/contador-js"
-      />
-    </S.WrapperTabPanel>
-    <S.WrapperTabPanel>
-      <h3>Starred Repositories</h3>
-      <RepositoryItem
-        name="foca-do"
-        fullName="jeanleles/foca-do"
-        linkRepo="https://github.com/jeanleles/foca-do"
-      />
-    </S.WrapperTabPanel>
-  </S.WrapperTabs>
+  const { githubState, getUserRepos, getUserStarred } = useGithub()
+  const [hasUserForSearchrepos, setHasUserForSearchrepos] = useState(false)
 
-}
+  useEffect(() => {
+    if (githubState.user.login) {
+      getUserRepos(githubState.user.login)
+      getUserStarred(githubState.user.login)
+    }
+    setHasUserForSearchrepos(githubState.repositories)
+
+  }, [githubState.user.login])
+
+  return (
+    <>
+      {hasUserForSearchrepos ? (
+        <S.WrapperTabs
+          selectedTabClassName="is-selected"
+          selectedTabPanelClassName="is-selected"
+        >
+          <S.WrapperTabList>
+            <S.WrapperTab>Repositories</S.WrapperTab>
+            <S.WrapperTab>Starreds</S.WrapperTab>
+          </S.WrapperTabList>
+          <S.WrapperTabPanel>
+            <S.WrapperList>
+              {githubState.repositories.map((item) => (
+                <RepositoryItem
+                  key={item.id}
+                  name={item.name}
+                  description={item.description}
+                  linkToRepo={item.html_url}
+                  updated_at={item.updated_at}
+                />
+              ))}
+            </S.WrapperList>
+          </S.WrapperTabPanel>
+          <S.WrapperTabPanel>
+            <S.WrapperList>
+              {githubState.starred.map((item) => (
+                <StarredItem
+                  key={item.id}
+                  name={item.name}
+                  description={item.description}
+                  linkToRepo={item.html_url}
+                  fullName={item.full_name}
+                  updated_at={item.updated_at}
+                />
+              ))}
+            </S.WrapperList>
+          </S.WrapperTabPanel>
+        </S.WrapperTabs>
+      ) : (
+        <></>
+      )}
+    </>
+  );
+};
+
 
 export default Repositories
