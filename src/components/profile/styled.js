@@ -5,11 +5,36 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     color: #FEFEFE;
-    margin: 4px 30px 40px 0;
+    margin: 0 0 40px 0;
     padding: 20px 12px;
     border: 2px solid #4ECCA3;
     border-radius: 8px;
-    min-width: 320px;
+    width: 320px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    
+    /* Scrollbar personalizada */
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: #17191c;
+        border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: #4ECCA3;
+        border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+        background: #3db892;
+    }
 `
 
 export const WrapperInfoUser = styled.div`

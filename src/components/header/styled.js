@@ -45,9 +45,15 @@ export const WrapperSearch = styled.div`
         color: #FEFEFE;        
         width: 300px;
         user-select: none;
+        background: #17191c;
         
         &:focus {
             outline: none;
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
     }
 
@@ -55,11 +61,19 @@ export const WrapperSearch = styled.div`
         background-color: #4ECCA3;
         padding: 9px;
         border-radius: 0 8px 8px 0;
-    
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
 
-        &:hover {
+        &:hover:not(:disabled) {
+            background-color: #3db892;
             color: #FFF;
-            transition: all .2s;
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #666;
         }
 
         .search {

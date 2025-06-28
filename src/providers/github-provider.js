@@ -7,6 +7,8 @@ export const GithubContext = createContext({
     user: {},
     repositories: [],
     starred: [],
+    error: false,
+    errorMessage: '',
 })
 
 const GithubProvider = ({ children }) => {
@@ -28,12 +30,17 @@ const GithubProvider = ({ children }) => {
         },
         repositories: [],
         starred: [],
+        error: false,
+        errorMessage: '',
     })
 
     const getUser = (username) => {
         setGithubState((prevState) => ({
             ...prevState,
-            loading: !prevState.loading,
+            loading: true,
+            error: false,
+            errorMessage: '',
+            hasUser: false,
         }));
 
         api
@@ -56,14 +63,36 @@ const GithubProvider = ({ children }) => {
                         following: data.following,
                         public_repos: data.public_repos,
                     },
+                    loading: false,
                 }));
             })
-            .finally(() => {
+            .catch((error) => {
+                let errorMessage = 'Erro ao buscar usuário';
+                
+                if (error.response?.status === 404) {
+                    errorMessage = 'Usuário não encontrado';
+                } else if (error.response?.status === 403) {
+                    errorMessage = 'Limite de requisições excedido. Tente novamente em alguns minutos.';
+                } else if (error.response?.status >= 500) {
+                    errorMessage = 'Erro no servidor. Tente novamente mais tarde.';
+                }
+
                 setGithubState((prevState) => ({
                     ...prevState,
-                    loading: !prevState.loading,
-                }))
+                    hasUser: false,
+                    error: true,
+                    errorMessage,
+                    loading: false,
+                }));
             })
+    };
+
+    const clearError = () => {
+        setGithubState((prevState) => ({
+            ...prevState,
+            error: false,
+            errorMessage: '',
+        }));
     };
 
     const getUserRepos = (username) => {
@@ -75,6 +104,9 @@ const GithubProvider = ({ children }) => {
                     repositories: data,
                 }))
             })
+            .catch((error) => {
+                console.error('Erro ao buscar repositórios:', error);
+            })
     }
 
     const getUserStarred = (username) => {
@@ -85,14 +117,17 @@ const GithubProvider = ({ children }) => {
             starred: data,
           }))
         })
+        .catch((error) => {
+            console.error('Erro ao buscar starred:', error);
+        })
       }
-
 
     const contextValue = {
         githubState,
         getUser: useCallback((username) => getUser(username), []),
         getUserRepos: useCallback((username) => getUserRepos(username), []),
         getUserStarred: useCallback((username) => getUserStarred(username), []),
+        clearError: useCallback(() => clearError(), []),
     }
 
     return (
