@@ -180,12 +180,12 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 👨‍💻 Autor
 
-**Jean** - [GitHub](https://github.com/seu-usuario)
+**Jean** - [GitHub](https://github.com/jeanleles)
 
 ## 🙏 Agradecimentos
 
 - [DIO](https://dio.me) - Bootcamp Spread Fullstack Developer
-- [Matheus Benites](https://github.com/matheusb-benites) - Professor do curso
+- [Matheus Benites](https://github.com/benites) - Professor do curso
 - [GitHub API](https://docs.github.com/en/rest) - Documentação da API
 
 ---
