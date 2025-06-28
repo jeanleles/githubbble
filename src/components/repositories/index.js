@@ -17,6 +17,10 @@ const Repositories = () => {
 
   }, [githubState.user.login])
 
+  // Ordenar repositórios e favoritos por updated_at (mais recentes primeiro)
+  const sortedRepositories = [...githubState.repositories].sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+  const sortedStarred = [...githubState.starred].sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+
   return (
     <>
       {hasUserForSearchrepos ? (
@@ -30,7 +34,7 @@ const Repositories = () => {
           </S.WrapperTabList>
           <S.WrapperTabPanel>
             <S.WrapperList>
-              {githubState.repositories.map((item) => (
+              {sortedRepositories.map((item) => (
                 <RepositoryItem
                   key={item.id}
                   name={item.name}
@@ -43,7 +47,7 @@ const Repositories = () => {
           </S.WrapperTabPanel>
           <S.WrapperTabPanel>
             <S.WrapperList>
-              {githubState.starred.map((item) => (
+              {sortedStarred.map((item) => (
                 <StarredItem
                   key={item.id}
                   name={item.name}

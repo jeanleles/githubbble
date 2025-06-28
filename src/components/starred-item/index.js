@@ -9,7 +9,7 @@ const StarredItem = ({ linkToRepo, fullName, updated_at, description }) => {
       <S.WrapperLink href={linkToRepo} target="_blank" rel="noreferrer">
         {fullName} <BiLinkExternal style={{ marginLeft: 4, verticalAlign: 'middle', fontSize: 18 }}/>
       </S.WrapperLink>      
-      <S.WrapperDate>Atualizado em: {format(new Date(updated_at), 'dd/mm/yyyy')}</S.WrapperDate>
+      <S.WrapperDate>Atualizado em: {format(new Date(updated_at), 'dd/MM/yyyy')}</S.WrapperDate>
       <S.WrapperDescription>{description}</S.WrapperDescription>
     </S.Wrapper>
   );
