@@ -185,7 +185,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 🙏 Agradecimentos
 
 - [DIO](https://dio.me) - Bootcamp Spread Fullstack Developer
-- [Matheus Benites](https://github.com/benites) - Professor do curso
+- [Matheus Benites](https://github.com/benits) - Professor do curso
 - [GitHub API](https://docs.github.com/en/rest) - Documentação da API
 
 ---
