@@ -64,7 +64,7 @@ export const WrapperSearch = styled.div`
         border: none;
         cursor: pointer;
         transition: all 0.2s ease;
-
+    
         &:hover:not(:disabled) {
             background-color: #3db892;
             color: #FFF;
